@@ -11,3 +11,22 @@
 form{
     padding: 1%;
 }
+
+#buttons{
+    text-align: center;
+    padding-top: 2%;
+}
+
+#delet{
+    margin-left: 35%;
+    margin-top: 3%;
+}
+
+#delet button{
+    margin-top: 15px;
+    margin-left: 50px;
+}
+
+#delet label{
+    margin-left: 40%;
+}
