@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
   <section class="hero is-primary is-bold is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
-      <button type="button" class="btn btn-primary btn-lg btn-block">Sistema de Médicos</button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">Sistema de Pacientes</button>
+      <button type="button" routerLink="/formDoctor" class="btn btn-primary btn-lg btn-block">Sistema de Médicos</button>
+      <button type="button" routerLink="/formPatient" class="btn btn-secondary btn-lg btn-block">Sistema de Pacientes</button>
       </div>
     </div>
   </section>`

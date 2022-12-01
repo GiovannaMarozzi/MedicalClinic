@@ -3,14 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { FormDoctorsComponent } from './form-doctors/form-doctors.component';
+import { FormPatientComponent } from './form-patient/form-patient.component';
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    FormDoctorsComponent,
+    FormPatientComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing
+
   ],
   providers: [],
   bootstrap: [AppComponent]
