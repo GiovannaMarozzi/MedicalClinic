@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { FormDoctorsComponent } from './form-doctors/form-doctors.component';
 import { FormPatientComponent } from './form-patient/form-patient.component';
 import { routing } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,8 @@ import { routing } from './app.routing';
   ],
   imports: [
     BrowserModule,
-    routing
-
+    routing,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
