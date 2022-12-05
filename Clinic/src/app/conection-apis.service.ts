@@ -6,6 +6,7 @@ import { Doctors } from './doctors';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ConectionApisService {
 
   private baseUrlDctors = "http://localhost:8080/medico";

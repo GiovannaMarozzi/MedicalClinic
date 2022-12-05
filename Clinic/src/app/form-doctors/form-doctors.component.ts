@@ -1,6 +1,7 @@
 import { ConectionApisService } from './../conection-apis.service';
 import { Doctors } from './../doctors';
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-doctors',
@@ -8,33 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-doctors.component.css']
 })
 export class FormDoctorsComponent implements OnInit {
-    doctor: Doctors[] = [];
+    doctor!: Doctors[];
 
     constructor(private connectionApiService: ConectionApisService){}
 
     ngOnInit(): void{
-    //   this.doctor =[{
-    //     "id":1,
-    //     "nome": "Giovanna",
-    //     "email": "fyufryfhr@fgruyfghrtfgr",
-    //     "crm":"2565484",
-    //     "especialidade": "teste"
-    //   },
-    //   {"id":2,
-    //   "nome": "Teste2",
-    //   "email": "fyufryfhr@fgruyfghrtfgr",
-    //   "crm":"defrfr545845",
-    //   "especialidade": "teste2"
-    // }
-      
-    // ];
-
-    this.getDoctors();
+        this.getDoctors();
     }
 
     private getDoctors(){
       this.connectionApiService.getDoctorList().subscribe(data =>{
         this.doctor = data
-      })
+      }),
+      (error: HttpErrorResponse) => {
+        alert(error.message) 
+      };
+      
     }
 }
