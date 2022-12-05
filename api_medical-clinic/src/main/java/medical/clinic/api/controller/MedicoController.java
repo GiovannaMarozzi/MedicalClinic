@@ -23,6 +23,7 @@ public class MedicoController {
         repository.save(new Medico(dados));
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/formDoctor", allowedHeaders = "Requestor-Type", exposedHeaders = "X-Get-Header")
     @GetMapping
     public List<DadosListagemMedico> listMedicos(){
         return repository.findAll().stream().map(DadosListagemMedico::new).toList();
