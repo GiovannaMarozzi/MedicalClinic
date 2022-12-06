@@ -2,6 +2,7 @@ import { ConectionApisService } from './../conection-apis.service';
 import { Doctors } from '../model/doctos/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DoctorsCadForm } from '../model/doctos/doctors-cad-form';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class FormDoctorsComponent implements OnInit {
     doctor!: Doctors[];
+    cadDoctor: DoctorsCadForm = new DoctorsCadForm();
 
     constructor(private connectionApiService: ConectionApisService){}
 
@@ -19,7 +21,7 @@ export class FormDoctorsComponent implements OnInit {
     }
 
     onSubmit(){
-
+      console.log(this.cadDoctor)
     }
 
     private getDoctors(){

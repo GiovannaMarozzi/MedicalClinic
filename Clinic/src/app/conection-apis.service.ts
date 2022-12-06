@@ -1,9 +1,8 @@
-import { Patient } from './model/patient';
+import { Doctors } from './model/doctos/doctors';
+import { Patient } from './model/patients/patient';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Doctors } from './model/doctors';
-
 @Injectable({
   providedIn: 'root'
 })
