@@ -9,6 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+import static java.util.Arrays.stream;
+
 @RestController
 @RequestMapping("paciente")
 public class PacienteController {
@@ -23,8 +27,8 @@ public class PacienteController {
     }
 
     @GetMapping
-    public Page<DadosListagemPaciente> listPacientes (@PageableDefault(size=10, sort={"nome"}) Pageable paginacao){
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
+    public List<DadosListagemPaciente> listPacientes (){
+        return repository.findAll().stream().map(DadosListagemPaciente::new).toList();
     }
 
     @PutMapping
