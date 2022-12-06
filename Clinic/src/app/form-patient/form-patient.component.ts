@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ConectionApisService } from '../conection-apis.service';
-import { Patient } from '../model/patient';
+import { Patient } from '../model/patients/patient';
 
 @Component({
   selector: 'app-form-patient',

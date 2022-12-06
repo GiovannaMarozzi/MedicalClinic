@@ -1,7 +1,8 @@
 import { ConectionApisService } from './../conection-apis.service';
-import { Doctors } from '../model/doctors';
+import { Doctors } from '../model/doctos/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-doctors',
@@ -15,6 +16,10 @@ export class FormDoctorsComponent implements OnInit {
 
     ngOnInit(): void{
         this.getDoctors();
+    }
+
+    onSubmit(){
+
     }
 
     private getDoctors(){
