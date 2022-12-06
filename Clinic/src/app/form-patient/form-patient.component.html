@@ -158,29 +158,18 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
             <th scope="col">CPF</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+          <tr *ngFor="let patient of patient">
+            <td>{{ patient.id }}</td>
+            <td>{{ patient.nome }}</td>
+            <td>{{ patient.email }}</td>
+            <td>{{ patient.cpf }}</td>
           </tr>
         </tbody>
       </table>

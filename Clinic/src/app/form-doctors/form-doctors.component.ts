@@ -1,5 +1,5 @@
 import { ConectionApisService } from './../conection-apis.service';
-import { Doctors } from './../doctors';
+import { Doctors } from '../model/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
