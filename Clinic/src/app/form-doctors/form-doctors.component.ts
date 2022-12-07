@@ -47,7 +47,7 @@ export class FormDoctorsComponent implements OnInit {
     }
 
    saveDoctor(){
-        this.connectionApiService.createDoctor(this.cadDoctor).subscribe(data => {
+        this.connectionApiService.createDoctor(this.jsonDoctor.value).subscribe(data => {
           console.log(data)
         },
         error => console.log(error))
@@ -55,7 +55,7 @@ export class FormDoctorsComponent implements OnInit {
 
     onSubmit(){
         console.log(this.jsonDoctor.value);
-        // this.saveDoctor()
+        this.saveDoctor();
     }
 
     private getDoctors(){
