@@ -2,8 +2,7 @@ import { ConectionApisService } from './../conection-apis.service';
 import { Doctors } from '../model/doctos/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { DoctorsCadForm } from '../model/doctos/doctors-cad-form';
-import { FormGroup, FormBuilder, FormControl, FormArray, Validators, FormArrayName } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 
@@ -15,7 +14,6 @@ import { FormGroup, FormBuilder, FormControl, FormArray, Validators, FormArrayNa
 export class FormDoctorsComponent implements OnInit {
     doctor!: Doctors[];
     doctorForm!: FormGroup;
-    cadDoctor: DoctorsCadForm = new DoctorsCadForm();
 
     jsonDoctor!: FormGroup;
     endereco: any;    
