@@ -1,15 +1,13 @@
+import { EnderecoForm } from './../endereco/enderecoForm';
 export class DoctorsCadForm {
-    id!: number;
-    nome!: string;
-    email!: string;
-    especialidade!: string;
-    crm!: string;
-    celular!: string;
-    logradouro!: string;
-    numero!: string;
-    complemento!: string;
-    cidade!: string;
-    uf!: string;
-    cep!: number;
+        id!: number;
+        nome!: string;
+        email!: string;
+        crm!: string;
+        telefone!: string;
+        especialidade!: string;
+        endereco!: EnderecoForm[] 
+
+        
 
 }

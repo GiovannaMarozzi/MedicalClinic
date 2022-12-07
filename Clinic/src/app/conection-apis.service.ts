@@ -1,3 +1,4 @@
+import { DoctorsCadForm } from './model/doctos/doctors-cad-form';
 import { Doctors } from './model/doctos/doctors';
 import { Patient } from './model/patients/patient';
 import { HttpClient } from '@angular/common/http';
@@ -21,5 +22,9 @@ export class ConectionApisService {
 
   getPatientList(): Observable<Patient[]>{
     return this.HttpClient.get<Patient[]>(`${this.baseUrlPatients}`);
+  }
+
+  createDoctor(formDoctors: DoctorsCadForm): Observable<Object>{
+    return this.HttpClient.post(`${this.baseUrlDctors}`, formDoctors);
   }
 }
