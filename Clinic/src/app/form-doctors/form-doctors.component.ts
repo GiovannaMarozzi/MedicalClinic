@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-
-
 @Component({
   selector: 'app-doctors',
   templateUrl: './form-doctors.component.html',

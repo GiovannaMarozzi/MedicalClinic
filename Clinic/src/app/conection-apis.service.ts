@@ -4,6 +4,7 @@ import { Patient } from './model/patients/patient';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PatientsCadForm } from './model/patients/patients-cad-form';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,5 +27,9 @@ export class ConectionApisService {
 
   createDoctor(formDoctors: DoctorsCadForm): Observable<Object>{
     return this.HttpClient.post(`${this.baseUrlDctors}`, formDoctors);
+  }
+
+  createPatient(formPatient: PatientsCadForm): Observable<Object>{
+    return this.HttpClient.post(`${this.baseUrlPatients}`, formPatient);
   }
 }
