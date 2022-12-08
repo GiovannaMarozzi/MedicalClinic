@@ -1,4 +1,4 @@
-import { EnderecoForm } from './../endereco/enderecoForm';
+import { EnderecoForm } from '../endereco/enderecoForm';
 export class DoctorsCadForm {
         id!: number;
         nome!: string;

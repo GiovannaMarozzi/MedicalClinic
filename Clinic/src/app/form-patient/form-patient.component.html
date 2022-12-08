@@ -1,15 +1,15 @@
 <router-outlet></router-outlet>
 
 <div id="delet">
-<div class="form-group col-md-5">
-  <label for="inputAddress">CPF:</label>
-  <input type="number" class="form-control" id="inputAddress1" placeholder="Digite o CPF">
-  <button type="button" class="btn btn-primary">Pesquisar</button>
-  <button type="button" class="btn btn-danger">Apagar</button>
-
+  <form (ngSubmit) = "updatePatient(cpf)">
+    <div class="form-group col-md-5">
+      <label for="inputAddress">CPF:</label>
+      <input type="number" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" [(ngModel)]="cpf">
+      <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </div>
+  </form>
 </div>
 
-</div>
 <div id="buttons">
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Abrir aba de cadastro</a>
@@ -145,9 +145,10 @@
                   <input type="text" class="form-control" id="inputZip" placeholder="99999-999">
                 </div>
               </div>
-              <div class="form-group">
-              </div>
-              <button type="submit" class="btn btn-primary">Editar</button>
+              <div class="form-group" style="margin-left: 10%;">
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <button type="button" id="clear" style="margin-left: 55%;" class="btn btn-danger">Apagar</button>
+            </div>
             </form>
           </div>
         </div>

@@ -1,5 +1,5 @@
-import { DoctorsCadForm } from './model/doctos/doctors-cad-form';
-import { Doctors } from './model/doctos/doctors';
+import { DoctorsCadForm } from './model/doctors/doctors-cad-form';
+import { Doctors } from './model/doctors/doctors';
 import { Patient } from './model/patients/patient';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
