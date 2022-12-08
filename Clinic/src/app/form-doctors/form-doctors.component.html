@@ -1,13 +1,13 @@
 <router-outlet></router-outlet>
 
 <div id="delet">
-<div class="form-group col-md-5">
-  <label for="inputAddress">CRM:</label>
-  <input type="number" class="form-control" id="inputAddress1" placeholder="Digite o CRM">
-  <button type="button" class="btn btn-primary">Pesquisar</button>
-  <button type="button" class="btn btn-danger">Apagar</button>
-
-</div>
+  <form (ngSubmit) = "updateDoctor(crm)" >
+    <div class="form-group col-md-5">
+      <label for="inputAddress">CRM:</label>
+      <input type="number" class="form-control" id="crm" name="crm" placeholder="Digite o CRM" [(ngModel)]="crm" required="">
+      <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </div>
+  </form>
 
 </div>
 <div id="buttons">
@@ -159,9 +159,10 @@
                   <input type="text" class="form-control" id="inputZip" placeholder="99999-999">
                 </div>
               </div>
-              <div class="form-group">
-              </div>
-              <button type="submit" class="btn btn-primary">Editar</button>
+              <div class="form-group" style="margin-left: 10%;">
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <button type="button" id="clear" style="margin-left: 55%;" class="btn btn-danger">Apagar</button>
+            </div>
             </form>
           </div>
         </div>

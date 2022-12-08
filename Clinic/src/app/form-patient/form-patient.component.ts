@@ -61,4 +61,9 @@ onSubmit(){
     };
     
   }
+
+  public cpf: any;
+    updatePatient(cpf: String) {
+        console.log(cpf)  
+      }
 }
