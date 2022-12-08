@@ -1,5 +1,5 @@
 import { ConectionApisService } from './../conection-apis.service';
-import { Doctors } from '../model/doctos/doctors';
+import { Doctors } from '../model/doctors/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -14,14 +14,15 @@ export class FormDoctorsComponent implements OnInit {
     doctorForm!: FormGroup;
 
     jsonDoctor!: FormGroup;
-    endereco: any;    
+    endereco: any; 
+    idDoctor: any;   
 
     constructor(private connectionApiService: ConectionApisService, private FormBuilder: FormBuilder){}
 
     ngOnInit(): void{
         this.getDoctors(),
         this.createJsonDoctor()
-    }
+      }
 
     createJsonDoctor(){
       this.jsonDoctor = this.FormBuilder.group({
@@ -63,4 +64,9 @@ export class FormDoctorsComponent implements OnInit {
       };
       
     }
+
+    public crm: any;
+    updateDoctor(crm: String) {
+        console.log(crm)  
+      }
 }

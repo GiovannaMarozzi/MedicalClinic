@@ -3,5 +3,5 @@ export class Doctors {
     nome!: string;
     email!: string;
     especialidade!: string;
-    crm!: string;
+    public crm!: string;
 }
