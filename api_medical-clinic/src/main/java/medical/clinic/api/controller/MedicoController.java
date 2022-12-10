@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 @RestController
 @RequestMapping("medico")
@@ -16,6 +17,8 @@ public class MedicoController {
 
     @Autowired
     private MedicoRepository repository;
+    @Autowired
+    private MedicoRepositoryById repositoryByid;
 
     @PostMapping
     @Transactional
@@ -27,6 +30,11 @@ public class MedicoController {
     @GetMapping
     public List<DadosListagemMedico> listMedicos(){
         return repository.findAll().stream().map(DadosListagemMedico::new).toList();
+    }
+
+    @GetMapping("crm={crm}")
+    public List<DadosListagemMedicoById> listMedicosById(@PathVariable Long crm){
+        return repositoryByid.findAllById(Collections.singleton(crm)).stream().map(DadosListagemMedicoById::new).toList();
     }
 
 //Caso futuramente precise colocar paginação
