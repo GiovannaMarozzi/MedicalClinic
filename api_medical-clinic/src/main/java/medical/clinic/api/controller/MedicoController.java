@@ -17,6 +17,8 @@ public class MedicoController {
 
     @Autowired
     private MedicoRepository repository;
+    @Autowired
+    private MedicoRepositoryById repositoryByid;
 
     @PostMapping
     @Transactional
@@ -32,7 +34,7 @@ public class MedicoController {
 
     @GetMapping("crm={crm}")
     public List<DadosListagemMedicoById> listMedicosById(@PathVariable Long crm){
-        return repository.findAllById(Collections.singleton(crm)).stream().map(DadosListagemMedicoById::new).toList();
+        return repositoryByid.findAllById(Collections.singleton(crm)).stream().map(DadosListagemMedicoById::new).toList();
     }
 
 //Caso futuramente precise colocar paginação

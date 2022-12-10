@@ -12,14 +12,14 @@ import medical.clinic.api.endereco.Endereco;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "crm")
+@EqualsAndHashCode(of = "id")
 public class Medico {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
     private String telefone;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long crm;
 
     @Enumerated(EnumType.STRING)
