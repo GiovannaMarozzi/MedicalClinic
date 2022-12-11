@@ -6,6 +6,7 @@ import { Doctors } from '../model/doctors/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ArrayType } from '@angular/compiler';
 
 @Component({
   selector: 'app-doctors',
@@ -13,13 +14,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form-doctors.component.css']
 })
 export class FormDoctorsComponent implements OnInit {
-[x: string]: any;
     doctor!: Doctors[];
     doctorForm!: FormGroup;
 
     doctorFormById!: DoctorsForm[];
     enderecoForm!: EnderecoForm[];
-    enderecoForm2!: any;
 
     jsonDoctor!: FormGroup;
     endereco: any; 
