@@ -21,6 +21,7 @@ export class FormDoctorsComponent implements OnInit {
     enderecoForm!: EnderecoForm[];
 
     jsonDoctor!: FormGroup;
+    jsonDoctorUpdate!: FormGroup;
     endereco: any; 
     idDoctor: any;   
 
@@ -30,6 +31,7 @@ export class FormDoctorsComponent implements OnInit {
     ngOnInit(): void{
         this.getDoctors(),
         this.createJsonDoctor()
+        this.createJsonDoctorUpdate()
       }
 
     createJsonDoctor(){
@@ -51,16 +53,32 @@ export class FormDoctorsComponent implements OnInit {
       });
     }
 
+    createJsonDoctorUpdate(){
+      this.jsonDoctorUpdate = this.FormBuilder.group({
+        nome: [],
+        email: [],
+        endereco: this.FormBuilder.group ({
+          logradouro: [],
+          bairro: [],
+          numero: [],
+          complemento: [],
+          cidade: [],
+          uf: [],
+          cep: []
+        })
+      });
+    }
+    
+    onSubmit(){
+        console.log(this.jsonDoctor.value);
+        this.saveDoctor();
+    }
+
    saveDoctor(){
         this.connectionApiService.createDoctor(this.jsonDoctor.value).subscribe(data => {
           console.log(data)
         },
         error => console.log(error))
-    }
-
-    onSubmit(){
-        console.log(this.jsonDoctor.value);
-        this.saveDoctor();
     }
 
     private getDoctors(){
@@ -88,4 +106,9 @@ export class FormDoctorsComponent implements OnInit {
         this.enderecoForm = x.endereco
       })
     }
+
+    update(){
+      console.log(this.jsonDoctorUpdate.value);
+      // this.saveDoctor();
+  }
   }
