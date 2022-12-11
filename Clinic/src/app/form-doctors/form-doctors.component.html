@@ -115,24 +115,24 @@
   <div class="col">
     <div class="collapse multi-collapse" id="multiCollapseExample2">
       <div class="card card-body">
-        <div id="formDoctors">
+        <div id="formDoctors" >
           <div id="doctors">
           <form>
             <p style="text-align: center;">Alteração Cadastral</p>
               <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6"*ngFor="let doctors of doctorFormById">
                   <label for="inputAddress">Nome</label>
-                  <input type="text" class="form-control" id="inputAddress1" placeholder="Nome">
+                  <input type="text" class="form-control" id="inputAddress1" name="nome" placeholder="Nome" value="{{doctors.nome}}"> <!-- [(ngModel)]="doctors.nome" -->
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" *ngFor="let doctors of doctorFormById">
                   <label for="inputEmail4">Celular</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" value="{{doctors.email}}">
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-4">
-                <label for="inputAddress2">Endereço:</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Endereço">
+              <div class="form-group col-md-4" *ngFor="let endereco of enderecoForm2">
+                <label for="inputAddress2"></label>
+                <input type="text" class="form-control" id="inputAddress2" name="logradouro" placeholder="Logradouro" value="{{endereco.logradouro}}">
               </div>
               <div class="form-group col-md-4">
                 <label for="inputAddress3">Numero:</label>

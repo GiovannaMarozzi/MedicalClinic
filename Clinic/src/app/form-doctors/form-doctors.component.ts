@@ -1,3 +1,6 @@
+import { Subscriber } from 'rxjs';
+import { EnderecoForm } from './../model/endereco/enderecoForm';
+import { DoctorsForm } from './../model/doctors/doctorsForm';
 import { ConectionApisService } from './../conection-apis.service';
 import { Doctors } from '../model/doctors/doctors';
 import { Component, OnInit } from '@angular/core';
@@ -10,14 +13,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form-doctors.component.css']
 })
 export class FormDoctorsComponent implements OnInit {
+[x: string]: any;
     doctor!: Doctors[];
     doctorForm!: FormGroup;
+
+    doctorFormById!: DoctorsForm[];
+    enderecoForm!: EnderecoForm[];
+    enderecoForm2!: any;
 
     jsonDoctor!: FormGroup;
     endereco: any; 
     idDoctor: any;   
 
-    constructor(private connectionApiService: ConectionApisService, private FormBuilder: FormBuilder){}
+    constructor(private connectionApiService: ConectionApisService, private FormBuilder: FormBuilder){
+    }
 
     ngOnInit(): void{
         this.getDoctors(),
@@ -62,11 +71,22 @@ export class FormDoctorsComponent implements OnInit {
       (error: HttpErrorResponse) => {
         alert(error.message) 
       };
-      
     }
 
     public crm: any;
     updateDoctor(crm: String) {
-        console.log(crm)  
+        this.connectionApiService.getDoctorListById(crm).subscribe(data =>{
+          this.doctorFormById = data
+          this.createJsonEndereco()
+        }),
+        (error: HttpErrorResponse) => {
+          alert(error.message) 
+        };
       }
-}
+
+    createJsonEndereco(){
+      this.doctorFormById.forEach(x => {
+        this.enderecoForm = x.endereco
+      })
+    }
+  }
