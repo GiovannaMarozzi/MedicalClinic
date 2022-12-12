@@ -1,3 +1,4 @@
+import { DoctorsCadFormUpdate } from './model/doctors/doctors-cad-form-update';
 import { DoctorsCadForm } from './model/doctors/doctors-cad-form';
 import { Doctors } from './model/doctors/doctors';
 import { Patient } from './model/patients/patient';
@@ -36,5 +37,9 @@ export class ConectionApisService {
 
   getDoctorListById(crm: String): Observable<DoctorsForm[]> {
     return this.HttpClient.get<DoctorsForm[]>(`${this.baseUrlDctors}/crm=${crm}`);
+  }
+
+  updateDoctor(formDoctorsUpdate: DoctorsCadFormUpdate): Observable<Object>{
+    return this.HttpClient.put(`${this.baseUrlDctors}`, formDoctorsUpdate)
   }
 }

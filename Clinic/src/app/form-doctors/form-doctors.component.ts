@@ -23,7 +23,8 @@ export class FormDoctorsComponent implements OnInit {
     jsonDoctor!: FormGroup;
     jsonDoctorUpdate!: FormGroup;
     endereco: any; 
-    idDoctor: any;   
+    idDoctor: any;  
+    public crm: any; 
 
     constructor(private connectionApiService: ConectionApisService, private FormBuilder: FormBuilder){
     }
@@ -54,17 +55,18 @@ export class FormDoctorsComponent implements OnInit {
     }
 
     createJsonDoctorUpdate(){
-      this.jsonDoctorUpdate = this.FormBuilder.group({
-        nome: [],
-        email: [],
+    this.jsonDoctorUpdate = this.FormBuilder.group({
+        crm: [null],
+        nome: [null],
+        email: [null],
         endereco: this.FormBuilder.group ({
-          logradouro: [],
-          bairro: [],
-          numero: [],
-          complemento: [],
-          cidade: [],
-          uf: [],
-          cep: []
+          logradouro: [null],
+          bairro: [null],
+          numero: [null],
+          complemento: [null],
+          cidade: [null],
+          uf: [null],
+          cep: [null]
         })
       });
     }
@@ -90,11 +92,12 @@ export class FormDoctorsComponent implements OnInit {
       };
     }
 
-    public crm: any;
+    
     updateDoctor(crm: String) {
         this.connectionApiService.getDoctorListById(crm).subscribe(data =>{
           this.doctorFormById = data
           this.createJsonEndereco()
+          // this.createJsonDoctorUpdate()
         }),
         (error: HttpErrorResponse) => {
           alert(error.message) 
@@ -109,6 +112,5 @@ export class FormDoctorsComponent implements OnInit {
 
     update(){
       console.log(this.jsonDoctorUpdate.value);
-      // this.saveDoctor();
   }
   }
