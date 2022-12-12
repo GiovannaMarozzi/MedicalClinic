@@ -117,10 +117,14 @@
     <div class="collapse multi-collapse" id="multiCollapseExample2">
       <div class="card card-body">
         <div id="formDoctors">
-          <div id="doctors">
-         
+          <div id="doctors" *ngFor="let doctors of doctorFormById">
+
+              <div class="infos">Doutor(a): {{doctors.nome}}</div> 
+              <div class="infos">CRM: {{doctors.crm}}</div> 
+              <br>
+
             <form (ngSubmit) = "update()" [formGroup]="jsonDoctorUpdate">
-            <p style="text-align: center;">Cadastro de Médicos</p>
+            <p style="text-align: center;">Edição Cadastral</p>
 
               <div class="form-row">
                  <div class="form-group col-md-6" [formGroup]="jsonDoctorUpdate">
@@ -148,7 +152,7 @@
             
              <div class="form-group col-md-4" [formGroup]="jsonDoctorUpdate">
                 <label for="inputAddress3">CRM:</label>
-                <input type="text" class="form-control" id="inputAddress3" placeholder="Digite o CRM" formControlName="crm" name="crm">
+                <input type="text" class="form-control" id="inputAddress3" placeholder="Digite o CRM" name="crm" value="{{doctors.crm}}" disabled>
               </div>
               <div class="form-group col-md-4" formGroupName="endereco">
                 <label for="inputAddress3">Numero:</label>
@@ -180,7 +184,7 @@
               </div>
               <button type="submit" class="btn btn-primary">Editar</button>
             </form>
-            
+
           </div>
         </div>
       </div>
