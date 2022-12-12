@@ -117,6 +117,9 @@ export class FormDoctorsComponent implements OnInit {
       (error: HttpErrorResponse) => {
         alert(error.message) 
       };
+    }
+  
+    deleteDoctor(id: String){
       
-  }
+    }
   }
