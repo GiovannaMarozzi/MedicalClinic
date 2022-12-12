@@ -1,8 +1,10 @@
+import { PatientForm } from './../model/patients/patientForm';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ConectionApisService } from '../conection-apis.service';
 import { Patient } from '../model/patients/patient';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EnderecoForm } from '../model/endereco/enderecoForm';
 
 
 @Component({
@@ -14,6 +16,11 @@ export class FormPatientComponent {
   patient!: Patient[];
   jsonPatient!: FormGroup;
   endereco: any; 
+
+  patientFormById!: PatientForm[];
+  jsonPatientUpdate!: FormGroup;
+  enderecoForm!: EnderecoForm[];
+  public cpf: any;
 
   constructor(private connectionApiService: ConectionApisService, private FormBuilder: FormBuilder){}
 
@@ -40,6 +47,23 @@ createJsonPatient(){
   });
 }
 
+createJsonPatientUpdate(cpf: String){
+  this.jsonPatientUpdate = this.FormBuilder.group({
+      cpf: [cpf],
+      nome: [null],
+      email: [null],
+      endereco: this.FormBuilder.group ({
+        logradouro: [null],
+        bairro: [null],
+        numero: [null],
+        complemento: [null],
+        cidade: [null],
+        uf: [null],
+        cep: [null]
+      })
+    });
+  }
+
 savePatient(){
   this.connectionApiService.createPatient(this.jsonPatient.value).subscribe(data => {
     console.log(data)
@@ -60,5 +84,38 @@ onSubmit(){
       alert(error.message) 
     };
     
+  }
+
+  updatePatient(cpf: String){
+    this.connectionApiService.getPatientListById(cpf).subscribe(data =>{
+      this.patientFormById = data
+      this.createJsonEndereco()
+      this.createJsonPatientUpdate(cpf)
+    }),
+    (error: HttpErrorResponse) => {
+      alert(error.message) 
+    };
+  }
+
+    createJsonEndereco(){
+      this.patientFormById.forEach(x => {
+        this.enderecoForm = x.endereco
+      })
+    }
+
+    update(){
+      this.connectionApiService.updatePatient(this.jsonPatientUpdate.value).subscribe(data => {
+        console.log(data)
+      }),
+      (error: HttpErrorResponse) => {
+        alert(error.message) 
+      };
+  }
+
+  deletePatient(id: String){
+    this.connectionApiService.deletePatient(id).subscribe(data =>{
+      console.log(data)
+      this.getPatients();
+    })
   }
 }
