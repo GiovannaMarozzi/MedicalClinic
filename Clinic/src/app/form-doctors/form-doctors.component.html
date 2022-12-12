@@ -5,7 +5,7 @@
     <div class="form-group col-md-5">
       <label for="inputAddress">CRM:</label>
       <input type="number" class="form-control" id="crm" name="crm" placeholder="Digite o CRM" [(ngModel)]="crm" required="">
-      <button type="submit" style="margin-left: 32%;" class="btn btn-primary">Pesquisar</button>
+      <button type="submit" style="margin-left: 32%;" class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Pesquisar</button>
     </div>
   </form>
 
@@ -182,9 +182,12 @@
                   </div> 
                 </div>
                 <div class="form-group">
+                  <div id="buttonsSubmit">
+                  <button type="submit" class="btn btn-primary">Editar</button>
+                  <button type="button" (click)="deleteDoctor(doctors.crm)" style="margin-left: 2%;" class="btn btn-danger">Deletar</button>
+                    
                 </div>
-                <button type="submit" class="btn btn-primary">Editar</button>
-                <button type="button" (click)="deleteDoctor(doctors.crm)" class="btn btn-danger">Deletar</button>
+              </div>
               </form>
 
             </div>
