@@ -1,3 +1,5 @@
+import { PatientForm } from './model/patients/patientForm';
+import { DoctorsCadFormUpdate } from './model/doctors/doctors-cad-form-update';
 import { DoctorsCadForm } from './model/doctors/doctors-cad-form';
 import { Doctors } from './model/doctors/doctors';
 import { Patient } from './model/patients/patient';
@@ -5,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PatientsCadForm } from './model/patients/patients-cad-form';
+import { DoctorsForm } from './model/doctors/doctorsForm';
+import { PatientCadFormUpdate } from './model/patients/patient-cad-form-update';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,5 +35,29 @@ export class ConectionApisService {
 
   createPatient(formPatient: PatientsCadForm): Observable<Object>{
     return this.HttpClient.post(`${this.baseUrlPatients}`, formPatient);
+  }
+
+  getDoctorListById(crm: String): Observable<DoctorsForm[]> {
+    return this.HttpClient.get<DoctorsForm[]>(`${this.baseUrlDctors}/crm=${crm}`);
+  }
+
+  getPatientListById(cpf: String): Observable<PatientForm[]> {
+    return this.HttpClient.get<PatientForm[]>(`${this.baseUrlPatients}/cpf=${cpf}`);
+  }
+
+  updateDoctor(formDoctorsUpdate: DoctorsCadFormUpdate): Observable<Object>{
+    return this.HttpClient.put(`${this.baseUrlDctors}`, formDoctorsUpdate)
+  }
+
+  updatePatient(formPatientUpdate: PatientCadFormUpdate): Observable<Object>{
+    return this.HttpClient.put(`${this.baseUrlPatients}`, formPatientUpdate)
+  }
+
+  deleteDoctor(crm: String): Observable<Object>{
+    return this.HttpClient.delete(`${this.baseUrlDctors}/crm=${crm}`)
+  }
+
+  deletePatient(cpf: String): Observable<Object>{
+    return this.HttpClient.delete(`${this.baseUrlPatients}/cpf=${cpf}`)
   }
 }
