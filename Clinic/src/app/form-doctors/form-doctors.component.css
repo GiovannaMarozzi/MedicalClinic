@@ -47,6 +47,7 @@ button{
 }
 
 .infos{
-    padding: 6%;
+    /* padding: 6%; */
     margin-left: 5%;
+    text-align: center;
 }

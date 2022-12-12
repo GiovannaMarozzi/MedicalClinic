@@ -43,7 +43,7 @@ public class PacienteController {
     @PutMapping
     @Transactional
     public void atualizarPacientes(@RequestBody @Valid DadosAtualizacaoPaciente dados){
-        var paciente = repository.getReferenceById(dados.id());
+        var paciente = repositoryById.getReferenceById(dados.cpf());
         paciente.atualizarInformacoes(dados);
     }
 

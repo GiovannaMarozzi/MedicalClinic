@@ -32,7 +32,7 @@ export class FormDoctorsComponent implements OnInit {
     ngOnInit(): void{
         this.getDoctors(),
         this.createJsonDoctor()
-        this.createJsonDoctorUpdate()
+        // this.createJsonDoctorUpdate(this.crm)
       }
 
     createJsonDoctor(){
@@ -54,9 +54,9 @@ export class FormDoctorsComponent implements OnInit {
       });
     }
 
-    createJsonDoctorUpdate(){
+    createJsonDoctorUpdate(crm: String){
     this.jsonDoctorUpdate = this.FormBuilder.group({
-        crm: [null],
+        crm: [crm],
         nome: [null],
         email: [null],
         endereco: this.FormBuilder.group ({
@@ -97,7 +97,7 @@ export class FormDoctorsComponent implements OnInit {
         this.connectionApiService.getDoctorListById(crm).subscribe(data =>{
           this.doctorFormById = data
           this.createJsonEndereco()
-          // this.createJsonDoctorUpdate()
+          this.createJsonDoctorUpdate(crm)
         }),
         (error: HttpErrorResponse) => {
           alert(error.message) 
@@ -111,6 +111,13 @@ export class FormDoctorsComponent implements OnInit {
     }
 
     update(){
-      console.log(this.jsonDoctorUpdate.value);
+      // console.log(this.jsonDoctorUpdate.value);
+      this.connectionApiService.updateDoctor(this.jsonDoctorUpdate.value).subscribe(data => {
+        console.log(data)
+      }),
+      (error: HttpErrorResponse) => {
+        alert(error.message) 
+      };
+      
   }
   }
