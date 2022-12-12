@@ -51,9 +51,9 @@ public class MedicoController {
         medico.atualizarInformacoes(dados);
     }
 
-    @DeleteMapping("/id={id}")
+    @DeleteMapping("/crm={crm}")
     @Transactional
-    public void excluir(@PathVariable Long id){
-        repository.deleteById(id);
+    public void excluir(@PathVariable Long crm){
+        repositoryByid.deleteById(crm);
     }
 }
