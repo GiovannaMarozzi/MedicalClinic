@@ -6,7 +6,7 @@ import { Doctors } from '../model/doctors/doctors';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ArrayType } from '@angular/compiler';
+import { ArrayType, ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-doctors',
@@ -120,6 +120,9 @@ export class FormDoctorsComponent implements OnInit {
     }
   
     deleteDoctor(id: String){
-      
+      this.connectionApiService.deleteDoctor(id).subscribe(data =>{
+        console.log(data)
+        this.getDoctors();
+      })
     }
   }

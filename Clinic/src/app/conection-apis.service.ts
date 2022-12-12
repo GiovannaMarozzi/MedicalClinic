@@ -56,4 +56,8 @@ export class ConectionApisService {
   deleteDoctor(crm: String): Observable<Object>{
     return this.HttpClient.delete(`${this.baseUrlDctors}/crm=${crm}`)
   }
+
+  deletePatient(cpf: String): Observable<Object>{
+    return this.HttpClient.delete(`${this.baseUrlPatients}/cpf=${cpf}`)
+  }
 }

@@ -47,10 +47,9 @@ public class PacienteController {
         paciente.atualizarInformacoes(dados);
     }
 
-    @DeleteMapping("/id={id}")
+    @DeleteMapping("/cpf={cpf}")
     @Transactional
-    public void excluirPaciente(@PathVariable Long id){
-        repository.deleteById(id);
+    public void excluirPaciente(@PathVariable Long cpf){repositoryById.deleteById(cpf);
     }
 
 

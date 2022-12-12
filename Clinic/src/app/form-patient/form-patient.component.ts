@@ -111,4 +111,11 @@ onSubmit(){
         alert(error.message) 
       };
   }
+
+  deletePatient(id: String){
+    this.connectionApiService.deletePatient(id).subscribe(data =>{
+      console.log(data)
+      this.getPatients();
+    })
+  }
 }
