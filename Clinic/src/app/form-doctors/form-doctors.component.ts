@@ -111,7 +111,6 @@ export class FormDoctorsComponent implements OnInit {
     }
 
     update(){
-      // console.log(this.jsonDoctorUpdate.value);
       this.connectionApiService.updateDoctor(this.jsonDoctorUpdate.value).subscribe(data => {
         console.log(data)
       }),
