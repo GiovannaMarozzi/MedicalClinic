@@ -52,4 +52,8 @@ export class ConectionApisService {
   updatePatient(formPatientUpdate: PatientCadFormUpdate): Observable<Object>{
     return this.HttpClient.put(`${this.baseUrlPatients}`, formPatientUpdate)
   }
+
+  deleteDoctor(crm: String): Observable<Object>{
+    return this.HttpClient.delete(`${this.baseUrlDctors}/crm=${crm}`)
+  }
 }
