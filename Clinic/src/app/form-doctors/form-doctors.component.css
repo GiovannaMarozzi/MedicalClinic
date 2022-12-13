@@ -36,6 +36,7 @@ form{
     padding-top: 3%;
 }
 
+
 .card-body{
     border: 1px solid rgb(224, 224, 224);
     border-radius: 10px;
@@ -51,3 +52,31 @@ button{
     margin-left: 5%;
     text-align: center;
 }
+
+.row{
+    padding: 2%;
+}
+
+#informations{
+    padding: 5%;   
+}
+
+#display{
+    padding-left: 2.2%;
+    padding-right: 2.2%;
+}
+
+#buttonsSubmit{
+    margin-left: 36%;
+}
+
+table{
+    text-align: center;
+}
+
+input:invalid {
+    border-color: red !important;
+  }
+  input:valid {
+    border-color: green !important;
+  }
