@@ -4,7 +4,7 @@
   <form (ngSubmit) = "updatePatient(cpf)" >
     <div class="form-group col-md-5">
       <label for="inputAddress">CPF:</label>
-      <input type="number" class="form-control" id="cpf" name="cpf" placeholder="Apenas números" [(ngModel)]="cpf" required="required" maxlength="11" pattern="\d*">
+      <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Apenas números" [(ngModel)]="cpf" required="required" maxlength="11" pattern="\d*">
       <button type="submit" style="margin-left: 32%;" class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Pesquisar</button>
     </div>
   </form>
