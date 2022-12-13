@@ -6,7 +6,7 @@ import { FormPatientComponent } from '../form-patient/form-patient.component';
 import { FormDoctorsComponent } from '../form-doctors/form-doctors.component';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: HomeComponent, pathMatch:'full'},
     { path: 'formDoctor', component: FormDoctorsComponent},
     { path: 'formPatient', component: FormPatientComponent}
 ];
