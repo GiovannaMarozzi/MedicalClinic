@@ -66,13 +66,16 @@ createJsonPatientUpdate(cpf: String){
 
 savePatient(){
   this.connectionApiService.createPatient(this.jsonPatient.value).subscribe(data => {
-    console.log(data)
-  },
-  error => console.log(error))
+    this.jsonPatient.reset(new Patient)
+    this.getPatients();
+    alert("Cadastro efefuado com sucesso!")
+  }),
+  (error: HttpErrorResponse) =>{
+    alert(error.message)
+  }
 }
 
 onSubmit(){
-  console.log(this.jsonPatient.value);
   this.savePatient();
 }
 
@@ -80,9 +83,9 @@ onSubmit(){
     this.connectionApiService.getPatientList().subscribe(data =>{
       this.patient = data
     }),
-    (error: HttpErrorResponse) => {
-      alert(error.message) 
-    };
+    (error: HttpErrorResponse) =>{
+      alert(error.message)
+    }
     
   }
 
@@ -91,10 +94,11 @@ onSubmit(){
       this.patientFormById = data
       this.createJsonEndereco()
       this.createJsonPatientUpdate(cpf)
+      this.getPatients();
     }),
-    (error: HttpErrorResponse) => {
-      alert(error.message) 
-    };
+    (error: HttpErrorResponse) =>{
+      alert(error.message)
+    }
   }
 
     createJsonEndereco(){
@@ -106,16 +110,20 @@ onSubmit(){
     update(){
       this.connectionApiService.updatePatient(this.jsonPatientUpdate.value).subscribe(data => {
         console.log(data)
+        this.getPatients();
+        this.jsonPatientUpdate.reset(new Patient);
+        alert("Cadastro atualizado com sucesso!")
       }),
-      (error: HttpErrorResponse) => {
-        alert(error.message) 
-      };
+      (error: HttpErrorResponse) =>{
+        alert(error.message)
+      }
   }
 
   deletePatient(id: String){
     this.connectionApiService.deletePatient(id).subscribe(data =>{
       console.log(data)
       this.getPatients();
+      alert("Cadastro deletado com sucesso!")
     })
   }
 }
