@@ -79,6 +79,7 @@ export class FormDoctorsComponent implements OnInit {
    saveDoctor(){
         this.connectionApiService.createDoctor(this.jsonDoctor.value).subscribe(data => {
           console.log(data)
+          this.getDoctors();
         },
         error => console.log(error))
     }
@@ -98,6 +99,7 @@ export class FormDoctorsComponent implements OnInit {
           this.doctorFormById = data
           this.createJsonEndereco()
           this.createJsonDoctorUpdate(crm)
+          this.getDoctors();
         }),
         (error: HttpErrorResponse) => {
           alert(error.message) 
@@ -112,7 +114,8 @@ export class FormDoctorsComponent implements OnInit {
 
     update(){
       this.connectionApiService.updateDoctor(this.jsonDoctorUpdate.value).subscribe(data => {
-        console.log(data)
+        console.log(data);
+        this.getDoctors();
       }),
       (error: HttpErrorResponse) => {
         alert(error.message) 
