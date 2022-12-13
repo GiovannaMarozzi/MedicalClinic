@@ -73,3 +73,10 @@ button{
 table{
     text-align: center;
 }
+
+input:invalid {
+    border-color: red !important;
+  }
+  input:valid {
+    border-color: green !important;
+  }
