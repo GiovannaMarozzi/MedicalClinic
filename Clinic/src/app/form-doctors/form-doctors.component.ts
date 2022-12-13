@@ -3,9 +3,9 @@ import { EnderecoForm } from './../model/endereco/enderecoForm';
 import { DoctorsForm } from './../model/doctors/doctorsForm';
 import { ConectionApisService } from './../conection-apis.service';
 import { Doctors } from '../model/doctors/doctors';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ArrayType, ConditionalExpr } from '@angular/compiler';
 
 @Component({
@@ -38,7 +38,7 @@ export class FormDoctorsComponent implements OnInit {
     createJsonDoctor(){
       this.jsonDoctor = this.FormBuilder.group({
         nome: [null, Validators.required],
-        email: [null, Validators.required],
+        email: [null, [Validators.required, Validators.email]],
         crm: [null, Validators.required],
         telefone: [null, Validators.required],
         especialidade: [null, Validators.required],
@@ -79,7 +79,9 @@ export class FormDoctorsComponent implements OnInit {
    saveDoctor(){
         this.connectionApiService.createDoctor(this.jsonDoctor.value).subscribe(data => {
           console.log(data)
+          this.jsonDoctor.reset(new Doctors)
           this.getDoctors();
+          alert("Cadastro efefuado com sucesso!")
         },
         error => console.log(error))
     }
@@ -99,7 +101,7 @@ export class FormDoctorsComponent implements OnInit {
           this.doctorFormById = data
           this.createJsonEndereco()
           this.createJsonDoctorUpdate(crm)
-          this.getDoctors();
+          this.getDoctors()
         }),
         (error: HttpErrorResponse) => {
           alert(error.message) 
@@ -116,6 +118,8 @@ export class FormDoctorsComponent implements OnInit {
       this.connectionApiService.updateDoctor(this.jsonDoctorUpdate.value).subscribe(data => {
         console.log(data);
         this.getDoctors();
+        this.jsonDoctorUpdate.reset(new Doctors);
+        alert("Cadastro atualizado com sucesso!")
       }),
       (error: HttpErrorResponse) => {
         alert(error.message) 
@@ -126,6 +130,7 @@ export class FormDoctorsComponent implements OnInit {
       this.connectionApiService.deleteDoctor(id).subscribe(data =>{
         console.log(data)
         this.getDoctors();
+        alert("Cadastro deletado!")
       })
     }
   }
