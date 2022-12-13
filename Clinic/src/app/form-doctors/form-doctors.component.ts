@@ -32,7 +32,6 @@ export class FormDoctorsComponent implements OnInit {
     ngOnInit(): void{
         this.getDoctors(),
         this.createJsonDoctor()
-        // this.createJsonDoctorUpdate(this.crm)
       }
 
     createJsonDoctor(){
@@ -72,18 +71,18 @@ export class FormDoctorsComponent implements OnInit {
     }
     
     onSubmit(){
-        console.log(this.jsonDoctor.value);
         this.saveDoctor();
     }
 
    saveDoctor(){
         this.connectionApiService.createDoctor(this.jsonDoctor.value).subscribe(data => {
-          console.log(data)
           this.jsonDoctor.reset(new Doctors)
           this.getDoctors();
           alert("Cadastro efefuado com sucesso!")
-        },
-        error => console.log(error))
+        }),
+        (error: HttpErrorResponse) =>{
+          alert(error.message)
+        }
     }
 
     private getDoctors(){
@@ -116,7 +115,6 @@ export class FormDoctorsComponent implements OnInit {
 
     update(){
       this.connectionApiService.updateDoctor(this.jsonDoctorUpdate.value).subscribe(data => {
-        console.log(data);
         this.getDoctors();
         this.jsonDoctorUpdate.reset(new Doctors);
         alert("Cadastro atualizado com sucesso!")
@@ -128,9 +126,11 @@ export class FormDoctorsComponent implements OnInit {
   
     deleteDoctor(id: String){
       this.connectionApiService.deleteDoctor(id).subscribe(data =>{
-        console.log(data)
         this.getDoctors();
-        alert("Cadastro deletado!")
-      })
+        alert("Cadastro deletado com sucesso!")
+      }),
+      (error: HttpErrorResponse) =>{
+        alert(error.message)
+      }
     }
   }
