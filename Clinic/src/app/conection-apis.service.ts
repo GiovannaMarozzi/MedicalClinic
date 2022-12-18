@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { PatientsCadForm } from './model/patients/patients-cad-form';
 import { DoctorsForm } from './model/doctors/doctorsForm';
 import { PatientCadFormUpdate } from './model/patients/patient-cad-form-update';
+import { FormSchedules } from './schedules/form-schedules';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +61,9 @@ export class ConectionApisService {
 
   deletePatient(cpf: String): Observable<Object>{
     return this.HttpClient.delete(`${this.baseUrlPatients}/cpf=${cpf}`)
+  }
+
+  createAgendamento(formAgend: FormSchedules):Observable<Object>{
+    return this.HttpClient.post(`${this.baseUrlPatients}/cadAgendamento`, null)
   }
 }

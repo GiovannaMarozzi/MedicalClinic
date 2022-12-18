@@ -26,10 +26,10 @@
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom02">CPF:</label>
                             <input type="text" class="form-control" id="validationCustom02" placeholder="CPF"
-                                formControlName="cpf" name="cpf">
+                                formControlName="cpf" id="cpf" name="cpf" [(ngModel)]="cpf">
                         </div>
 
-                        <button class="btn btn-primary" (click)="pesquisar()" type="submit">Pesquisar</button>
+                        <button class="btn btn-primary" (click)="pesquisar(cpf)">Pesquisar</button>
 
                     </div>
                     <br>

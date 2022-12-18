@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InformationsDoctorsComponent } from './informations-doctors/informations-doctors.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-
+import { ConectionApisService } from '../conection-apis.service';
+import { PatientForm } from '../model/patients/patientForm';
 
 declare var $: any;
 
@@ -17,8 +17,12 @@ declare var $: any;
 export class SchedulesComponent {
 
   jsonConsult!: FormGroup;
+  public cpf: any;
 
-  constructor(public dialog: MatDialog, private FormBuilder: FormBuilder) { }
+
+  patientFormById!: PatientForm[];
+
+  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder) { }
 
   ngOnInit(): void{
     $("[name='active']").click(function(){
@@ -50,8 +54,25 @@ export class SchedulesComponent {
     })
   }
 
-  pesquisar(){
-    alert("oiii")
+  pesquisar(cpf: String){
+    this.connectionApiService.getPatientListById(cpf).subscribe(data =>{
+      this.patientFormById = data
+      this.informacoes();
+    })
+  }
+
+  informacoes(){
+    this.patientFormById.forEach(x =>{
+      alert("Nome: " + x.nome +"\n"
+          + "CPF: "+x.cpf +"\n" 
+          + "E-mail: "+x.email+"\n"
+          + "Telefone ou Celular: "+x.telefone)
+    })
+
+    this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
+      console.log("foi")
+    })
+
   }
 
   teste(){
