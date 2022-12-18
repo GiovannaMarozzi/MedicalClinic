@@ -2,12 +2,11 @@ package medical.clinic.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import medical.clinic.api.medico.DadosListagemMedicoById;
+import medical.clinic.api.agendas.AgendRepository;
+import medical.clinic.api.agendas.Agendamento;
+import medical.clinic.api.agendas.Consultas;
 import medical.clinic.api.paciente.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -24,6 +23,9 @@ public class PacienteController {
 
     @Autowired
     private PacienteRepositoryById repositoryById;
+
+    @Autowired
+    private AgendRepository agendRepository;
 
     @PostMapping
     @Transactional
@@ -52,5 +54,11 @@ public class PacienteController {
     public void excluirPaciente(@PathVariable Long cpf){repositoryById.deleteById(cpf);
     }
 
+
+    @PostMapping("/cadAgendamento")
+    @Transactional
+    public void cadAgendamento(@RequestBody @Valid Agendamento agendamento){
+        agendRepository.save(new Consultas(agendamento));
+    }
 
 }
