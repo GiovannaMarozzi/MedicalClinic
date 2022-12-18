@@ -12,7 +12,8 @@
     <div class="col">
         <div class="collapse multi-collapse" id="multiCollapseExample1">
             <div class="card card-body">
-                <p>Agendamento de Consultas</p>
+                <h1><p>Agendamento de Consultas</p></h1>
+               
                 <br>
 
                 <form class="needs-validation" (ngSubmit)="teste()" [formGroup]="jsonConsult">
@@ -82,7 +83,7 @@
                                 formControlName="hora"></ngx-timepicker-field>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit">Cadastrar Consulta</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="jsonConsult.invalid">Cadastrar Consulta</button>
                 </form>
             </div>
         </div>
