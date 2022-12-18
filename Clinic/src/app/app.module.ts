@@ -8,6 +8,7 @@ import { FormPatientComponent } from './form-patient/form-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SchedulesComponent } from './schedules/schedules.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     FormDoctorsComponent,
-    FormPatientComponent
+    FormPatientComponent,
+    SchedulesComponent
   ],
   imports: [
     BrowserModule,
