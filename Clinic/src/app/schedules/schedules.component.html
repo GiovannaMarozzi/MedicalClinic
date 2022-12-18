@@ -15,7 +15,7 @@
                 <p>Agendamento de Consultas</p>
                 <br>
 
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation" novalidate (ngSubmit) = "createJsonConsult()">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom01">Nome Completo:</label>
@@ -26,18 +26,18 @@
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="validationCustom02">Idade:</label>
-                            <input type="text" class="form-control" id="validationCustom02" placeholder="Idade"
+                            <label for="validationCustom02">CPF:</label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder="CPF"
                                 required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
+
+                        <button class="btn btn-primary" (click)="pesquisar()" type="submit">Pesquisar</button>
+
                     </div>
                     <br>
-
-                    <!-- Colocar essa parte para ser habilitada somente se marcar como true se a pessoa te convênio ou não -->
-
 
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                         <div id="consulta0" class="toggle div-inline">
