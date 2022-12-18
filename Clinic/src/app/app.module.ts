@@ -16,9 +16,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-// import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { InformationsDoctorsComponent } from './schedules/informations-doctors/informations-doctors.component';
 
 
 @NgModule({
@@ -27,7 +26,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     HomeComponent,
     FormDoctorsComponent,
     FormPatientComponent,
-    SchedulesComponent
+    SchedulesComponent,
+    InformationsDoctorsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatNativeDateModule,
     MatInputModule,
     NgxMaterialTimepickerModule,
-    // MdbModalModule
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

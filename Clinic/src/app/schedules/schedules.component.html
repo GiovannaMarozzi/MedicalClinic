@@ -33,18 +33,16 @@
 
                 <!-- Colocar essa parte para ser habilitada somente se marcar como true se a pessoa te convênio ou não -->
                 <label>Convênio:</label><br>
+                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="customControlInline">
+                        <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+                    </div>
                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                         <option selected>Choose...</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-
-                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                        <input type="checkbox" class="custom-control-input" id="customControlInline">
-                        <label class="custom-control-label" for="customControlInline">Remember my preference</label>
-                    </div>
-
                     <br>
 
                 <label>Especialidade:</label><br>
@@ -57,7 +55,6 @@
 
 
                 <div class="form-row">
-
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Choose a date</mat-label>
                         <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
@@ -65,19 +62,18 @@
                         <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field>
 
-                      <button class="btn btn-primary" type="submit">Submit form</button>
+                      <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
+                      <button mat-button (click)="openDialog()">Launch dialog</button>
+
 
                       <div class="ngx-timepicker-field-example">
                         <ngx-timepicker-field [format]="24" ></ngx-timepicker-field>
                     </div>
-
-                    
-
-                 <!--Colocar caledário para pesquisar as datas e hrs, também incluir uma div que irá fazer com que apareça os Dr e horário dos mesmos -->
                 </div>
 
                 <button class="btn btn-primary" type="submit">Submit form</button>
               </form>
+              
               
               <script>
               // Example starter JavaScript for disabling form submissions if there are invalid fields
