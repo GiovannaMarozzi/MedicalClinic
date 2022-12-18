@@ -20,11 +20,13 @@ export class SchedulesComponent {
 
   constructor(public dialog: MatDialog, private FormBuilder: FormBuilder) { }
 
-  ngOnInit() {
-    $("[name='toggle']").click(function(){
-      var cont = $("[name='toggle']:checked").length;
+  ngOnInit(): void{
+    $("[name='active']").click(function(){
+      var cont = $("[name='active']:checked").length;
       $("#inlineFormCustomSelectPref").prop("disabled", cont ? false : true);
    });
+
+   this.createJsonConsult();
 }
 
   myFilter = (d: Date | null): boolean => {
@@ -41,8 +43,8 @@ export class SchedulesComponent {
     this.jsonConsult = this.FormBuilder.group({
       nome: [null, Validators.required],
       cpf: [null, Validators.required],
-      conveio: [null, Validators.required],
-      espcialidade: [null, Validators.required],
+      convenio: [null],
+      especialidade: [null, Validators.required],
       data: [null, Validators.required],
       hora: [null, Validators.required],
     })
@@ -52,5 +54,7 @@ export class SchedulesComponent {
     alert("oiii")
   }
 
-
+  teste(){
+    console.log(this.jsonConsult)
+  }
 }

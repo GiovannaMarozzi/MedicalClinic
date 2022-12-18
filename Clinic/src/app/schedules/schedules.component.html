@@ -15,23 +15,17 @@
                 <p>Agendamento de Consultas</p>
                 <br>
 
-                <form class="needs-validation" novalidate (ngSubmit) = "createJsonConsult()">
+                <form class="needs-validation" (ngSubmit)="teste()" [formGroup]="jsonConsult">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom01">Nome Completo:</label>
                             <input type="text" class="form-control" id="validationCustom01"
-                                placeholder="Digite o nome completo do paciente" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                                placeholder="Digite o nome completo do paciente" formControlName="nome" name="nome">
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom02">CPF:</label>
                             <input type="text" class="form-control" id="validationCustom02" placeholder="CPF"
-                                required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                                formControlName="cpf" name="cpf">
                         </div>
 
                         <button class="btn btn-primary" (click)="pesquisar()" type="submit">Pesquisar</button>
@@ -40,18 +34,19 @@
                     <br>
 
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                        <div id="consulta0" class="toggle div-inline">
+                        <div id="consulta0" class="active div-inline">
 
                             <label>Convênio:</label>
-                            <input type="checkbox" id="consultar-acervo" data-id="consultar-acervo" name="toggle">
+                            <input type="checkbox" id="active" data-id="active" name="active">
                         </div>
                         <div class=" item1">
                             <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref"
-                                lass="btn btn-success" disabled>
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                lass="btn btn-success" name="convenio" formControlName.isDisabled="convenio" disabled>
+                                <option value="">Selecione</option>
+                                <option value="NotreDame Intermédica">NotreDame Intermédica</option>
+                                <option value="Prevent Senior">Prevent Senior</option>
+                                <option value="Bradesco Seguros">Bradesco Seguros</option>
+                                <option value="Amil Assistência Médica">Amil Assistência Médica</option>
                             </select>
                         </div>
                     </div>
@@ -59,36 +54,36 @@
                     <br>
 
                     <label>Especialidade:</label><br>
-                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                        <option selected>Choose...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-
+                    <div class=" item1">
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="especialidade"
+                            formControlName="especialidade">
+                            <option value="ORTOPEDIA">Ortopedia</option>
+                            <option value="CARDIOLOGIA">Cardiologia</option>
+                            <option value="GINECOLOIA">Ginecologia</option>
+                            <option value="DERMATOLOGIA">Dermatologia</option>
+                        </select>
+                        <button class="btn btn-primary" mat-button (click)="openDialog()">Verificar Horários</button>
+                    </div>
+                    <br>
+                    <br>
 
                     <div class="form-row" id="dates">
 
-                        <button class="btn btn-primary" mat-button (click)="openDialog()">Launch dialog</button>
-
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Choose a date</mat-label>
-                            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+                            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" name="data"
+                                formControlName="data">
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
 
                         <div class="ngx-timepicker-field-example">
-                            <ngx-timepicker-field [format]="24"></ngx-timepicker-field>
+                            <ngx-timepicker-field [format]="24" name="hora"
+                                formControlName="hora"></ngx-timepicker-field>
                         </div>
                     </div>
-
-                    <br>
-                    <br>
-
-                    <button class="btn btn-primary" type="submit">Submit form</button>
+                    <button class="btn btn-primary" type="submit">Cadastrar Consulta</button>
                 </form>
-
             </div>
         </div>
     </div>
