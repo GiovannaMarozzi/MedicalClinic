@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { InformationsDoctorsComponent } from './informations-doctors/informations-doctors.component';
+
+
+
+declare var $: any;
+
 
 
 @Component({
@@ -12,7 +17,14 @@ import { InformationsDoctorsComponent } from './informations-doctors/information
 
 export class SchedulesComponent {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
+
+  ngOnInit() {
+    $("[name='toggle']").click(function(){
+      var cont = $("[name='toggle']:checked").length;
+      $("#aplica").prop("disabled", cont ? false : true);
+   });
+}
 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -23,5 +35,5 @@ export class SchedulesComponent {
   openDialog() {
     this.dialog.open(InformationsDoctorsComponent);
   }
-  
+
 }

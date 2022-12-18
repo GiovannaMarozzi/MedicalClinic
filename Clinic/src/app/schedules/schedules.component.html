@@ -1,38 +1,53 @@
 <router-outlet></router-outlet>
 
 <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Adendamento de Consultas</a>
-    <button class="btn btn-primary" type="none" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-  </p>
-  <div class="row">
+    <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+        aria-controls="multiCollapseExample1">Adendamento de Consultas</a>
+    <button class="btn btn-primary" type="none" data-toggle="collapse" data-target="#multiCollapseExample2"
+        aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse"
+        aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+</p>
+<div class="row">
     <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample1">
-        <div class="card card-body">
-            <p>Agendamento de Consultas</p>
-            <br>
-
-            <form class="needs-validation" novalidate>
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Nome Completo:</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Digite o nome completo do paciente" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustom02">Idade:</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Idade" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
-                  </div>
-                </div>
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+                <p>Agendamento de Consultas</p>
                 <br>
 
-                <!-- Colocar essa parte para ser habilitada somente se marcar como true se a pessoa te convênio ou não -->
-                <label>Convênio:</label><br>
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom01">Nome Completo:</label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                placeholder="Digite o nome completo do paciente" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationCustom02">Idade:</label>
+                            <input type="text" class="form-control" id="validationCustom02" placeholder="Idade"
+                                required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- Colocar essa parte para ser habilitada somente se marcar como true se a pessoa te convênio ou não -->
+                    <label>Convênio:</label><br>
+
+                    <div id= "consulta0" class="toggle div-inline"> 
+                        <input type="checkbox" id="consultar-acervo" data-id="consultar-acervo" name="toggle">
+                        <p class= "nomeToogle"> Consultar Acervos</p>
+                    </div>
+
+                    <div class=" item1">
+                        <button type="button" class="btn btn-success" id="aplica" onclick="checar()" disabled> Aplicar</button> 
+                    </div>
+
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                         <input type="checkbox" class="custom-control-input" id="customControlInline">
                         <label class="custom-control-label" for="customControlInline">Remember my preference</label>
@@ -45,74 +60,48 @@
                     </select>
                     <br>
 
-                <label>Especialidade:</label><br>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                    <label>Especialidade:</label><br>
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
 
 
-                <div class="form-row">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
+                    <div class="form-row" id="dates">
 
-                      <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-                      <button mat-button (click)="openDialog()">Launch dialog</button>
+                        <button class="btn btn-primary" mat-button (click)="openDialog()">Launch dialog</button>
+
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                        <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
 
 
-                      <div class="ngx-timepicker-field-example">
-                        <ngx-timepicker-field [format]="24" ></ngx-timepicker-field>
+                        <div class="ngx-timepicker-field-example">
+                            <ngx-timepicker-field [format]="24"></ngx-timepicker-field>
+                        </div>
                     </div>
-                </div>
 
-                <button class="btn btn-primary" type="submit">Submit form</button>
-              </form>
-              
-              
-              <script>
-              // Example starter JavaScript for disabling form submissions if there are invalid fields
-              
-              (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                  var forms = document.getElementsByClassName('needs-validation');
-                  // Loop over them and prevent submission
-                  var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                      if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                      }
-                      form.classList.add('was-validated');
-                    }, false);
-                  });
-                }, false);
-              })();
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </form>
 
-              </script>
-
-
+            </div>
         </div>
-      </div>
     </div>
-
-
-
-
 
 
     <div class="col">
-      <div class="collapse multi-collapse" id="multiCollapseExample2">
-        <div class="card card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
