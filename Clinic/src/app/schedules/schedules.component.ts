@@ -72,7 +72,6 @@ export class SchedulesComponent {
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
       console.log("foi")
     })
-
   }
 
   teste(){
