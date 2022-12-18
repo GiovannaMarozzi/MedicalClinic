@@ -6,8 +6,6 @@ import { InformationsDoctorsComponent } from './informations-doctors/information
 
 declare var $: any;
 
-
-
 @Component({
   selector: 'app-schedules',
   templateUrl: './schedules.component.html',
@@ -22,7 +20,7 @@ export class SchedulesComponent {
   ngOnInit() {
     $("[name='toggle']").click(function(){
       var cont = $("[name='toggle']:checked").length;
-      $("#aplica").prop("disabled", cont ? false : true);
+      $("#inlineFormCustomSelectPref").prop("disabled", cont ? false : true);
    });
 }
 
