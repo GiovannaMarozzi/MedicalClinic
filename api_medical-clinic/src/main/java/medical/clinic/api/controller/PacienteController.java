@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import medical.clinic.api.agendas.AgendRepository;
 import medical.clinic.api.agendas.Agendamento;
 import medical.clinic.api.agendas.Consultas;
+import medical.clinic.api.agendas.DadosListagemConsultas;
 import medical.clinic.api.paciente.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +60,11 @@ public class PacienteController {
     @Transactional
     public void cadAgendamento(@RequestBody @Valid Agendamento agendamento){
         agendRepository.save(new Consultas(agendamento));
+    }
+
+    @GetMapping("/cadAgendamento")
+    public List<DadosListagemConsultas> listagemConsultas(){
+        return agendRepository.findAll().stream().map(DadosListagemConsultas::new).toList();
     }
 
 }
