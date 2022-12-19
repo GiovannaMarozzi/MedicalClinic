@@ -64,6 +64,6 @@ export class ConectionApisService {
   }
 
   createAgendamento(formAgend: FormSchedules):Observable<Object>{
-    return this.HttpClient.post(`${this.baseUrlPatients}/cadAgendamento`, null)
+    return this.HttpClient.post(`${this.baseUrlPatients}/cadAgendamento`, formAgend)
   }
 }

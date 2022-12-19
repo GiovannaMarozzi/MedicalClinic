@@ -16,7 +16,7 @@
                
                 <br>
 
-                <form class="needs-validation" (ngSubmit)="teste()" [formGroup]="jsonConsult">
+                <form class="needs-validation" [formGroup]="jsonConsult">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationCustom01">Nome Completo:</label>
@@ -83,7 +83,7 @@
                                 formControlName="hora"></ngx-timepicker-field>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit" [disabled]="jsonConsult.invalid">Cadastrar Consulta</button>
+                    <button class="btn btn-primary" type="submit" (click)="teste()" [disabled]="jsonConsult.invalid">Cadastrar Consulta</button>
                 </form>
             </div>
         </div>

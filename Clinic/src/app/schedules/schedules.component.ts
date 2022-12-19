@@ -47,6 +47,7 @@ export class SchedulesComponent {
     this.jsonConsult = this.FormBuilder.group({
       nome: [null, Validators.required],
       cpf: [null, Validators.required],
+      doutor: ["teste", Validators.required],
       convenio: [null],
       especialidade: [null, Validators.required],
       data: [null, Validators.required],
@@ -68,13 +69,11 @@ export class SchedulesComponent {
           + "E-mail: "+x.email+"\n"
           + "Telefone ou Celular: "+x.telefone)
     })
-
-    this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
-      console.log("foi")
-    })
   }
 
   teste(){
-    console.log(this.jsonConsult)
+    this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
+      console.log("foi")
+    })
   }
 }
