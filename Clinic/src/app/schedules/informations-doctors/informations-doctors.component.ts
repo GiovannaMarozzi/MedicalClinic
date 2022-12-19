@@ -16,6 +16,8 @@ import { Doctors } from 'src/app/model/doctors/doctors';
 export class InformationsDoctorsComponent implements OnInit {
 
   doctor!: Doctors[];
+  doctorsFilter!: Doctors[];
+
   day: any; //Para a geração de dias do mês
   month: any; //Para a geração de mês (até o mês de Março = 3)
   hour: any; //Para a geração de horas
@@ -23,10 +25,10 @@ export class InformationsDoctorsComponent implements OnInit {
 
   especialidade!: any;
   
+  
   constructor(private connectionApiService: ConectionApisService){}
   
   ngOnInit(): void {
-    // console.log(this.espc.especialidade)
     this.getDoctors()
   }
 
@@ -46,8 +48,7 @@ export class InformationsDoctorsComponent implements OnInit {
     const hours = this.hour+":"+this.minutes
     
     this.connectionApiService.getDoctorList().subscribe(x =>{
-      this.doctor = x
-      
+      this.doctor = x      
       this.doctor.forEach(y =>{
         y.data = data
         y.hora = hours
