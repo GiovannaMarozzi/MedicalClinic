@@ -11,4 +11,4 @@ We have the branches which are the 'milestone-CRUD' milestones together with the
 
 'milestone-backEnd' together with the technical branch 'frontEnd-earlyDevelopment' is the milestone fully responsible for the backEnd.
 
-![Fluxo_git](https://user-images.githubusercontent.com/36972799/207452080-79121e3a-e544-4536-9e3b-8a5014730c9e.png)
+![Fluxo_git](https://user-images.githubusercontent.com/36972799/208477853-b22c4bd1-fe98-4395-a442-2ee068405002.png)
