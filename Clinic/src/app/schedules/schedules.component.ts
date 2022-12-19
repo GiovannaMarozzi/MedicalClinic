@@ -4,6 +4,7 @@ import { InformationsDoctorsComponent } from './informations-doctors/information
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConectionApisService } from '../conection-apis.service';
 import { PatientForm } from '../model/patients/patientForm';
+import { FormSchedules } from './form-schedules';
 
 declare var $: any;
 
@@ -19,10 +20,15 @@ export class SchedulesComponent {
   jsonConsult!: FormGroup;
   public cpf: any;
 
+  day: any; //Para a geração de dias do mês
+  month: any; //Para a geração de mês (até o mês de Março = 3)
 
   patientFormById!: PatientForm[];
+  consults!: FormSchedules[]
 
-  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder) { }
+  public especialidade: any[] = [];
+
+  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) { }
 
   ngOnInit(): void{
     $("[name='active']").click(function(){
@@ -31,6 +37,7 @@ export class SchedulesComponent {
    });
 
    this.createJsonConsult();
+   this.getConsults();
 }
 
   myFilter = (d: Date | null): boolean => {
@@ -39,8 +46,10 @@ export class SchedulesComponent {
     return day !== 0 && day !== 6;
   };
 
-  openDialog() {
+  openDialog(especialidade: any) {
     this.dialog.open(InformationsDoctorsComponent);
+    this.especialidade = especialidade
+    this.informations.filter(especialidade)
   }
 
   createJsonConsult(){
@@ -71,9 +80,15 @@ export class SchedulesComponent {
     })
   }
 
-  teste(){
+  createAgend(){
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
-      console.log("foi")
+      this.getConsults();
+    })
+  }
+
+  getConsults(){
+    this.connectionApiService.getAgendamento().subscribe(data =>{
+      this.consults = data
     })
   }
 }

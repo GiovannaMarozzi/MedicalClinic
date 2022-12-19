@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { InformationsDoctorsComponent } from './schedules/informations-doctors/informations-doctors.component';
-
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { InformationsDoctorsComponent } from './schedules/informations-doctors/i
     MatNativeDateModule,
     MatInputModule,
     NgxMaterialTimepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
