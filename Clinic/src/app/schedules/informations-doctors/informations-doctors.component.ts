@@ -53,6 +53,7 @@ export class InformationsDoctorsComponent implements OnInit {
         y.data = data
         y.hora = hours
       })
+      
     }),
     (error: HttpErrorResponse) => {
       alert(error.message) 
