@@ -1,0 +1,49 @@
+#agend{
+    padding: 3%;
+}
+
+form{
+    background-color: rgba(248, 248, 248, 0.932);
+    border-radius: 20px;
+}
+
+#container{
+    padding: 3%;
+    display: block;
+}
+
+p{
+    text-align: center;
+    font-size: 25px;
+}
+
+
+.item1{
+    padding-right: 60%;
+}
+
+#active{
+    margin-left: 1%;
+    height: 15px;
+    margin-top: 0.5%;
+}
+
+#consulta{
+    display: inline;
+}
+
+#pesquisar{
+    height: 50px; 
+    margin-top: 2%; 
+    margin-left: 1%;
+}
+
+.ngx-timepicker-field-example{
+    margin-top: 1%;
+}
+
+#cad{
+    margin-top: 5%;
+}
+
+
