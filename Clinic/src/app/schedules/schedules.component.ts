@@ -4,6 +4,7 @@ import { InformationsDoctorsComponent } from './informations-doctors/information
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConectionApisService } from '../conection-apis.service';
 import { PatientForm } from '../model/patients/patientForm';
+import { FormSchedules } from './form-schedules';
 
 declare var $: any;
 
@@ -21,6 +22,7 @@ export class SchedulesComponent {
 
 
   patientFormById!: PatientForm[];
+  consults!: FormSchedules[]
 
   constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder) { }
 
@@ -31,6 +33,7 @@ export class SchedulesComponent {
    });
 
    this.createJsonConsult();
+   this.getConsults();
 }
 
   myFilter = (d: Date | null): boolean => {
@@ -73,7 +76,13 @@ export class SchedulesComponent {
 
   teste(){
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
-      console.log("foi")
+      this.getConsults();
+    })
+  }
+
+  getConsults(){
+    this.connectionApiService.getAgendamento().subscribe(data =>{
+      this.consults = data
     })
   }
 }

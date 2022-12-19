@@ -66,4 +66,8 @@ export class ConectionApisService {
   createAgendamento(formAgend: FormSchedules):Observable<Object>{
     return this.HttpClient.post(`${this.baseUrlPatients}/cadAgendamento`, formAgend)
   }
+
+  getAgendamento(): Observable<FormSchedules[]>{
+    return this.HttpClient.get<FormSchedules[]>(`${this.baseUrlPatients}/cadAgendamento`)
+  }
 }
