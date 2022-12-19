@@ -20,6 +20,8 @@ export class SchedulesComponent {
   jsonConsult!: FormGroup;
   public cpf: any;
 
+  day: any; //Para a geração de dias do mês
+  month: any; //Para a geração de mês (até o mês de Março = 3)
 
   patientFormById!: PatientForm[];
   consults!: FormSchedules[]

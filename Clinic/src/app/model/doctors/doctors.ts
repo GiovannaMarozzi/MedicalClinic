@@ -4,4 +4,6 @@ export class Doctors {
     email!: string;
     especialidade!: string;
     public crm!: string;
+    data!: string;
+    hora!: string;
 }
