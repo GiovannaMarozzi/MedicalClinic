@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Tabela de Horários</h1>
+<br>
+
+
+<div mat-dialog-content>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">CRM</th>
+        <th scope="col">Especialidade</th>
+        <th scope="col">Data</th>
+        <th scope="col">Hora</th>
+      </tr>   
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of doctor">
+        <td>{{ doctor.nome }}</td>
+        <td>{{ doctor.crm }}</td>
+        <td>{{ doctor.especialidade }}</td>
+        <td>{{ doctor.data }}</td>
+        <td>{{ doctor.hora }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -1,0 +1,114 @@
+<router-outlet></router-outlet>
+
+<div id="agend">
+    <h1>
+        <p>Agendamento de Consultas</p>
+    </h1>
+
+    <br>
+
+    <form class="needs-validation" [formGroup]="jsonConsult">
+        <div id="container">
+            <div class="form-row" >
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Nome Completo:</label>
+                    <input type="text" class="form-control" id="validationCustom01"
+                        placeholder="Digite o nome completo do paciente" formControlName="nome" name="nome">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">CPF:</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="CPF"
+                        formControlName="cpf" id="cpf" name="cpf" [(ngModel)]="cpf">
+                </div>
+
+                <button class="btn btn-primary" id="pesquisar" (click)="pesquisar(cpf)">Pesquisar</button>
+
+            </div>
+            <br>
+
+                <div id="consulta" class="active div-inline">
+
+                    <label>Convênio:</label>
+                    <input type="checkbox" id="active" data-id="active" name="active">
+                </div>
+                <div class=" item1">
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" lass="btn btn-success"
+                        name="convenio" formControlName="convenio">
+                        <option value="">Selecione</option>
+                        <option value="NotreDame Intermédica">NotreDame Intermédica</option>
+                        <option value="Prevent Senior">Prevent Senior</option>
+                        <option value="Bradesco Seguros">Bradesco Seguros</option>
+                        <option value="Amil Assistência Médica">Amil Assistência Médica</option>
+                    </select>
+                </div>
+
+            <br>
+
+            <label>Especialidade:</label><br>
+            <div class=" item1">
+                <select class="custom-select my-1 mr-sm-2"  id="especialidade" name="especialidade"
+                    formControlName="especialidade" [(ngModel)]="especialidade">
+                    <option value="ORTOPEDIA">Ortopedia</option>
+                    <option value="CARDIOLOGIA">Cardiologia</option>
+                    <option value="GINECOLOIA">Ginecologia</option>
+                    <option value="DERMATOLOGIA">Dermatologia</option>
+                </select>
+                <button class="btn btn-primary" mat-button (click)="openDialog(especialidade)">Verificar Horários</button>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-row">
+                <div id="dates">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Data da Consulta</mat-label>
+                    <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" name="data"
+                        formControlName="data">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <div class="ngx-timepicker-field-example">
+                    <ngx-timepicker-field [format]="24" name="hora" formControlName="hora"></ngx-timepicker-field>
+                </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" id="cad" (click)="createAgend()" [disabled]="jsonConsult.invalid">Cadastrar
+                Consulta</button>
+        </div>
+    </form>
+</div>
+
+<h1>
+    <p>Consultas Agendadas</p>
+</h1>
+
+<div id="informationsOfConsults">
+    <div class="card card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Especialidade</th>
+              <th scope="col">Doutor(a)</th>
+              <th scope="col">Convenio</th>
+              <th scope="col">Data</th>
+              <th scope="col">Hora</th>
+            </tr>   
+          </thead>
+          <tbody>
+            <tr *ngFor="let consults of consults">
+              <td>{{ consults.nome }}</td>
+              <td>{{ consults.cpf }}</td>
+              <td>{{ consults.especialidade }}</td>
+              <td>{{ consults.doutor }}</td>
+              <td>{{ consults.convenio }}</td>
+              <td>{{ consults.data }}</td>
+              <td>{{ consults.hora }}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+</div>

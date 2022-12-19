@@ -8,23 +8,42 @@ import { FormPatientComponent } from './form-patient/form-patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
-
+import { SchedulesComponent } from './schedules/schedules.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import { InformationsDoctorsComponent } from './schedules/informations-doctors/informations-doctors.component';
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FormDoctorsComponent,
-    FormPatientComponent
+    FormPatientComponent,
+    SchedulesComponent,
+    InformationsDoctorsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    FormsModule
-    
-
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    NgxMaterialTimepickerModule,
+    MatDialogModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
