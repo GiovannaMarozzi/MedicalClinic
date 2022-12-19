@@ -46,14 +46,14 @@
 
             <label>Especialidade:</label><br>
             <div class=" item1">
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="especialidade"
-                    formControlName="especialidade">
+                <select class="custom-select my-1 mr-sm-2"  id="especialidade" name="especialidade"
+                    formControlName="especialidade" [(ngModel)]="especialidade">
                     <option value="ORTOPEDIA">Ortopedia</option>
                     <option value="CARDIOLOGIA">Cardiologia</option>
                     <option value="GINECOLOIA">Ginecologia</option>
                     <option value="DERMATOLOGIA">Dermatologia</option>
                 </select>
-                <button class="btn btn-primary" mat-button (click)="openDialog()">Verificar Horários</button>
+                <button class="btn btn-primary" mat-button (click)="openDialog(especialidade)">Verificar Horários</button>
             </div>
             <br>
             <br>

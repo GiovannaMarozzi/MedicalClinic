@@ -26,7 +26,9 @@ export class SchedulesComponent {
   patientFormById!: PatientForm[];
   consults!: FormSchedules[]
 
-  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder) { }
+  public especialidade: any[] = [];
+
+  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) { }
 
   ngOnInit(): void{
     $("[name='active']").click(function(){
@@ -44,8 +46,10 @@ export class SchedulesComponent {
     return day !== 0 && day !== 6;
   };
 
-  openDialog() {
+  openDialog(especialidade: any) {
     this.dialog.open(InformationsDoctorsComponent);
+    this.especialidade = especialidade
+    this.informations.filter(especialidade)
   }
 
   createJsonConsult(){

@@ -14,7 +14,7 @@
       </tr>   
     </thead>
     <tbody>
-      <tr *ngFor="let doctor of doctor">
+      <tr *ngFor="let doctor of doctor | filter:especialidade; let i = index">
         <td>{{ doctor.nome }}</td>
         <td>{{ doctor.crm }}</td>
         <td>{{ doctor.especialidade }}</td>
