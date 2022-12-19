@@ -80,7 +80,7 @@ export class SchedulesComponent {
     })
   }
 
-  teste(){
+  createAgend(){
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
       this.getConsults();
     })
