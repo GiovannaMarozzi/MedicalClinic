@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InformationsDoctorsComponent } from './informations-doctors/informations-doctors.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConectionApisService } from '../conection-apis.service';
 import { PatientForm } from '../model/patients/patientForm';
 import { FormSchedules } from './form-schedules';
+import { Doctors } from '../model/doctors/doctors';
+
 
 declare var $: any;
 
+export interface Especialidades {
+  [x: string]: any;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-schedules',
   templateUrl: './schedules.component.html',
@@ -20,13 +29,15 @@ export class SchedulesComponent {
   jsonConsult!: FormGroup;
   public cpf: any;
 
-  day: any; //Para a geração de dias do mês
-  month: any; //Para a geração de mês (até o mês de Março = 3)
-
   patientFormById!: PatientForm[];
   consults!: FormSchedules[]
 
-  public especialidade: any[] = [];
+  especialidades!: FormGroup;
+
+  doctor!: Doctors[];  
+
+  especialidade!: any;
+  
 
   constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) { }
 
@@ -46,11 +57,10 @@ export class SchedulesComponent {
     return day !== 0 && day !== 6;
   };
 
-  openDialog(especialidade: any) {
-    this.dialog.open(InformationsDoctorsComponent);
-    this.especialidade = especialidade
-    this.informations.filter(especialidade)
+  public openDialog(especialidade: any) {
+   const dialog = this.dialog.open(InformationsDoctorsComponent);  
   }
+
 
   createJsonConsult(){
     this.jsonConsult = this.FormBuilder.group({
