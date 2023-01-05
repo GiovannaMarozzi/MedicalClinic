@@ -108,7 +108,7 @@
           <div id="formPatients">
             <div id="patients" *ngFor="let patients of patientFormById">
 
-                <div class="infos">Doutor(a): {{patients.nome}}</div> 
+                <div class="infos">Paciente: {{patients.nome}}</div> 
                 <div class="infos">CPF: {{patients.cpf}}</div> 
                 <br>
 
@@ -187,6 +187,7 @@
 
   <div id="display">
     <div id="buttons2">
+      <div id="buttonsCollapse">
     <p>
       <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
       Exibir lista
@@ -195,6 +196,7 @@
         Exibir/Fechar Lista
       </button>
     </p>
+    </div>
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
         <table class="table table-hover">
@@ -218,6 +220,5 @@
         </div>
       </div>
     </div>
-  </div>
 
 </div>

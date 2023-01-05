@@ -76,6 +76,7 @@ export class SchedulesComponent {
 
   pesquisar(cpf: String){
     this.connectionApiService.getPatientListById(cpf).subscribe(data =>{
+      console.log(data)
       this.patientFormById = data
       this.informacoes();
     })
