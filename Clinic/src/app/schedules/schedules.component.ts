@@ -6,6 +6,7 @@ import { ConectionApisService } from '../conection-apis.service';
 import { PatientForm } from '../model/patients/patientForm';
 import { FormSchedules } from './form-schedules';
 import { Doctors } from '../model/doctors/doctors';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 declare var $: any;
@@ -120,12 +121,12 @@ export class SchedulesComponent {
     })
   }
 
-  createAgend(espec: any){
-    this.namesDoctors(espec)
+  createAgend(){
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
-       this.getConsults();
-     })
-  }
+      this.getConsults();
+      alert("Consuta cadastrada com sucesso")
+    }),alert("Erro ao cadastrar consulta")
+    }
 
   getConsults(){
     this.connectionApiService.getAgendamento().subscribe(data =>{
