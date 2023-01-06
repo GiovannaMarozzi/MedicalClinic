@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InformationsDoctorsComponent } from './informations-doctors/informations-doctors.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -27,26 +27,29 @@ export interface Especialidades {
 export class SchedulesComponent {
 
   jsonConsult!: FormGroup;
+
   public cpf: any;
 
   patientFormById!: PatientForm[];
   consults!: FormSchedules[]
+  
+  id: number[] = [];
 
   especialidades!: FormGroup;
 
   doctor!: Doctors[];  
 
   especialidade!: any;
-  
 
-  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) { }
+  @Input() nameDoctor: any;
+
+  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) {}
 
   ngOnInit(): void{
     $("[name='active']").click(function(){
       var cont = $("[name='active']:checked").length;
       $("#inlineFormCustomSelectPref").prop("disabled", cont ? false : true);
    });
-
    this.createJsonConsult();
    this.getConsults();
 }
@@ -57,26 +60,52 @@ export class SchedulesComponent {
     return day !== 0 && day !== 6;
   };
 
-  public openDialog(especialidade: any) {
-   const dialog = this.dialog.open(InformationsDoctorsComponent);  
+  public openDialog(espec: any) {
+    const dialog = this.dialog.open(InformationsDoctorsComponent); 
+    this.namesDoctors(espec)
   }
 
+  namesDoctors(especialidade: any){
+    var espec;
+    this.connectionApiService.getDoctorList().subscribe(x =>{
+    this.doctor = x
 
+    this.doctor.forEach(x => {
+      espec = x.especialidade
+      
+      if(especialidade == espec){
+        this.id.push(x.id)
+      }
+    })
+
+    const sort = Math.floor(Math.random() * this.id.length);
+
+    // console.log(this.id[sort]); // resultado aleatório
+
+      this.doctor.forEach(w =>{
+        if(this.id[sort] == w.id){
+          this.nameDoctor = w.nome;
+        }
+      })
+   })   
+  }
+
+  
   createJsonConsult(){
+    var nameDoctor = this.nameDoctor
     this.jsonConsult = this.FormBuilder.group({
-      nome: [null, Validators.required],
-      cpf: [null, Validators.required],
-      doutor: ["teste", Validators.required],
+      nome: [null],
+      cpf: [null],
+      doutor: [nameDoctor],
       convenio: [null],
-      especialidade: [null, Validators.required],
-      data: [null, Validators.required],
-      hora: [null, Validators.required],
+      especialidade: [null],
+      data: [null],
+      hora: [null]
     })
   }
 
   pesquisar(cpf: String){
     this.connectionApiService.getPatientListById(cpf).subscribe(data =>{
-      console.log(data)
       this.patientFormById = data
       this.informacoes();
     })
@@ -91,10 +120,11 @@ export class SchedulesComponent {
     })
   }
 
-  createAgend(){
+  createAgend(espec: any){
+    this.namesDoctors(espec)
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
-      this.getConsults();
-    })
+       this.getConsults();
+     })
   }
 
   getConsults(){
