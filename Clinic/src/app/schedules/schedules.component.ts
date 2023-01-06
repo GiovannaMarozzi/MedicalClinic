@@ -93,15 +93,14 @@ export class SchedulesComponent {
 
   
   createJsonConsult(){
-    var nameDoctor = this.nameDoctor
     this.jsonConsult = this.FormBuilder.group({
-      nome: [null],
-      cpf: [null],
-      doutor: [nameDoctor],
-      convenio: [null],
-      especialidade: [null],
-      data: [null],
-      hora: [null]
+      nome: [null, Validators.required],
+      cpf: [null, Validators.required],
+      doutor: [null, Validators.required],
+      convenio: [null, Validators.required],
+      especialidade: [null, Validators.required],
+      data: [null, Validators.required],
+      hora: [null, Validators.required]
     })
   }
 
@@ -125,7 +124,9 @@ export class SchedulesComponent {
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
       this.getConsults();
       alert("Consuta cadastrada com sucesso")
-    }),alert("Erro ao cadastrar consulta")
+    }),(error: HttpErrorResponse) =>{
+      alert(error.message)
+    }
     }
 
   getConsults(){
