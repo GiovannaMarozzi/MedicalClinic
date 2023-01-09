@@ -49,3 +49,8 @@ p{
 #informationsOfConsults{
     padding: 3%;
 }
+
+#obs{
+    font-size: 8pt;
+    color: rgb(104, 104, 104);
+}

@@ -68,7 +68,7 @@ savePatient(){
   this.connectionApiService.createPatient(this.jsonPatient.value).subscribe(data => {
     this.jsonPatient.reset(new Patient)
     this.getPatients();
-    alert("Cadastro efefuado com sucesso!")
+    alert("Cadastro efetuado com sucesso!")
   }),
   (error: HttpErrorResponse) =>{
     alert(error.message)

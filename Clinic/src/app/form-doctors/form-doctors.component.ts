@@ -78,7 +78,7 @@ export class FormDoctorsComponent implements OnInit {
         this.connectionApiService.createDoctor(this.jsonDoctor.value).subscribe(data => {
           this.jsonDoctor.reset(new Doctors)
           this.getDoctors();
-          alert("Cadastro efefuado com sucesso!")
+          alert("Cadastro efetuado com sucesso!")
         }),
         (error: HttpErrorResponse) =>{
           alert(error.message)

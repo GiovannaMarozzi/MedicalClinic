@@ -32,8 +32,12 @@ form{
 }
 
 #buttons2{
-    text-align: center;
     padding-top: 3%;
+    padding-left: 2%;
+}
+
+#buttonsCollapse{
+    text-align: center;
 }
 
 .card-body{
@@ -69,13 +73,13 @@ button{
     margin-left: 36%;
 }
 
-table{
-    text-align: center;
-}
-
 input:invalid {
     border-color: red !important;
   }
   input:valid {
     border-color: green !important;
+  }
+
+thead{
+    padding: 5%;
   }

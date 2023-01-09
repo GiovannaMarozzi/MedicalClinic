@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InformationsDoctorsComponent } from './informations-doctors/informations-doctors.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConectionApisService } from '../conection-apis.service';
 import { PatientForm } from '../model/patients/patientForm';
 import { FormSchedules } from './form-schedules';
+import { Doctors } from '../model/doctors/doctors';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 declare var $: any;
 
+export interface Especialidades {
+  [x: string]: any;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-schedules',
   templateUrl: './schedules.component.html',
@@ -18,24 +28,29 @@ declare var $: any;
 export class SchedulesComponent {
 
   jsonConsult!: FormGroup;
-  public cpf: any;
 
-  day: any; //Para a geração de dias do mês
-  month: any; //Para a geração de mês (até o mês de Março = 3)
+  public cpf: any;
 
   patientFormById!: PatientForm[];
   consults!: FormSchedules[]
+  
+  id: number[] = [];
 
-  public especialidade: any[] = [];
+  especialidades!: FormGroup;
 
-  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) { }
+  doctor!: Doctors[];  
+
+  especialidade!: any;
+
+  @Input() nameDoctor: any;
+
+  constructor(private connectionApiService: ConectionApisService, public dialog: MatDialog, private FormBuilder: FormBuilder, private informations: InformationsDoctorsComponent) {}
 
   ngOnInit(): void{
     $("[name='active']").click(function(){
       var cont = $("[name='active']:checked").length;
       $("#inlineFormCustomSelectPref").prop("disabled", cont ? false : true);
    });
-
    this.createJsonConsult();
    this.getConsults();
 }
@@ -46,21 +61,46 @@ export class SchedulesComponent {
     return day !== 0 && day !== 6;
   };
 
-  openDialog(especialidade: any) {
-    this.dialog.open(InformationsDoctorsComponent);
-    this.especialidade = especialidade
-    this.informations.filter(especialidade)
+  public openDialog(espec: any) {
+    const dialog = this.dialog.open(InformationsDoctorsComponent); 
+    this.namesDoctors(espec)
   }
 
+  namesDoctors(especialidade: any){
+    var espec;
+    this.connectionApiService.getDoctorList().subscribe(x =>{
+    this.doctor = x
+
+    this.doctor.forEach(x => {
+      espec = x.especialidade
+      
+      if(especialidade == espec){
+        this.id.push(x.id)
+      }
+    })
+
+    const sort = Math.floor(Math.random() * this.id.length);
+
+    // console.log(this.id[sort]); // resultado aleatório
+
+      this.doctor.forEach(w =>{
+        if(this.id[sort] == w.id){
+          this.nameDoctor = w.nome;
+        }
+      })
+   })   
+  }
+
+  
   createJsonConsult(){
     this.jsonConsult = this.FormBuilder.group({
       nome: [null, Validators.required],
       cpf: [null, Validators.required],
-      doutor: ["teste", Validators.required],
-      convenio: [null],
+      doutor: [null, Validators.required],
+      convenio: [null, Validators.required],
       especialidade: [null, Validators.required],
       data: [null, Validators.required],
-      hora: [null, Validators.required],
+      hora: [null, Validators.required]
     })
   }
 
@@ -83,8 +123,11 @@ export class SchedulesComponent {
   createAgend(){
     this.connectionApiService.createAgendamento(this.jsonConsult.value).subscribe(data => {
       this.getConsults();
-    })
-  }
+      alert("Consuta cadastrada com sucesso")
+    }),(error: HttpErrorResponse) =>{
+      alert(error.message)
+    }
+    }
 
   getConsults(){
     this.connectionApiService.getAgendamento().subscribe(data =>{

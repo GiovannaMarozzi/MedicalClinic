@@ -50,14 +50,20 @@
                     formControlName="especialidade" [(ngModel)]="especialidade">
                     <option value="ORTOPEDIA">Ortopedia</option>
                     <option value="CARDIOLOGIA">Cardiologia</option>
-                    <option value="GINECOLOIA">Ginecologia</option>
+                    <option value="GINECOLOGIA">Ginecologia</option>
                     <option value="DERMATOLOGIA">Dermatologia</option>
                 </select>
                 <button class="btn btn-primary" mat-button (click)="openDialog(especialidade)">Verificar Horários</button>
+                
+                <br>
+                <br>
+                
+                <label for="validationCustom01">Doutor(a):</label>
+                <input type="text" class="form-control" id="validationCustom01" name="doutor" id="doutor" formControlName="doutor" value="{{nameDoctor}}">
+                <label id="obs">Obs: Dê um espaço ao final do nome para a confirmação do Dr.</label>
+           
             </div>
-            <br>
-            <br>
-
+            
             <div class="form-row">
                 <div id="dates">
 
