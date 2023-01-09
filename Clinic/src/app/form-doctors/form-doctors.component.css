@@ -32,10 +32,13 @@ form{
 }
 
 #buttons2{
-    text-align: center;
     padding-top: 3%;
+    padding-left: 2%;
 }
 
+#buttonsCollapse{
+    text-align: center;
+}
 
 .card-body{
     border: 1px solid rgb(224, 224, 224);
@@ -68,10 +71,6 @@ button{
 
 #buttonsSubmit{
     margin-left: 36%;
-}
-
-table{
-    text-align: center;
 }
 
 input:invalid {

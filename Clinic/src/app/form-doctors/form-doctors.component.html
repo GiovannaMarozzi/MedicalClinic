@@ -199,20 +199,22 @@
 
   <div id="display">
     <div id="buttons2">
-    <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      Exibir lista
-      </a>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Exibir/Fechar Lista
-      </button>
-    </p>
+      <div id="buttonsCollapse">
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Exibir lista
+          </a>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Exibir/Fechar Lista
+          </button>
+        </p>
+        </div>
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
         <table class="table table-hover" id="table">
           <thead> 
             <tr>
-              <th>#</th>
+              <th scope="col">#</th>
               <th scope="col">Nome</th>
               <th scope="col">E-mail</th>
               <th scope="col">CRM</th>
@@ -231,7 +233,6 @@
          </table>
         </div>
       </div>
-    </div>
-  </div>
+    
 
 </div>
